@@ -1,0 +1,40 @@
+<project name="Flex PMD" default="flexPMDDefaultRules" basedir="." >
+
+	<!-- FLEX PMD SETTINGS -->
+	<property name="flexpmd.version" value="1.0.RC4" />
+	<property name="flexpmd.dir" value="C:/flexpmd/ant" />
+
+	<tstamp>
+		<format property="pmd.timestamp" pattern="yyyyMMddHHmmss" />
+	</tstamp>
+	
+	<taskdef name="flexPmd"
+		classpath="${flexpmd.dir}/flex-pmd-ant-task-${flexpmd.version}.jar"
+		classname="com.adobe.ac.pmd.ant.FlexPmdAntTask">
+        <classpath>
+            <pathelement location="${flexpmd.dir}/flex-pmd-ruleset-api-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/flex-pmd-ruleset-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/flex-pmd-core-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/as3-plugin-utils-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/as3-parser-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/pmd-4.2.2.jar"/>
+            <pathelement location="${flexpmd.dir}/commons-lang-2.4.jar"/>
+            <pathelement location="${flexpmd.dir}/flex-pmd-files-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/as3-parser-api-${flexpmd.version}.jar"/>
+            <pathelement location="${flexpmd.dir}/plexus-utils-1.0.2.jar"/>
+        </classpath>
+    </taskdef>
+	
+	<!--
+		FLEX PMD
+	-->
+	<target name="flexPMDDefaultRules">
+        <echo>Flex PMD class path: ${flexpmd.dir}/flex-pmd-ant-task-${flexpmd.version}.jar</echo>
+		<flexPmd
+            sourceDirectory="${src.dir}"
+            outputDirectory="${bin-debug.dir}/pmd"/>
+		<move file="${bin-debug.dir}/pmd/pmd.xml"
+			tofile="${bin-debug.dir}/pmd/pmd_${pmd.timestamp}.xml" />
+    </target>
+	
+</project>

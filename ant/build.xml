@@ -1,0 +1,14 @@
+<project name="Example build file" default="build" basedir="." >
+
+	<!-- GENERAL SETTINGS -->
+	<property name="src.dir" value="${basedir}/../src/" />
+	<property name="bin-debug.dir" value="${basedir}/../bin-debug/" />
+
+	<!-- Imports -->
+	<!-- NOTE: Place your imports after properties the imported Ant scripts rely on! -->
+	<import file="as3_version.xml" />
+	<import file="flex_pmd.xml" />
+	
+	<target name="build" depends="injectVersion, flexPMDDefaultRules" />
+	
+</project>

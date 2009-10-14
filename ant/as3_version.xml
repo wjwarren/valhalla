@@ -1,0 +1,30 @@
+<project name="AS3 Version Injection" default="injectVersion" basedir="." >
+
+	<!-- VERSION INJECTION SETTINGS -->
+	<property name="version.tpl.file" value="${src.dir}/nl/ansuz/util/Version.as.tpl" />
+	<property name="version.src.file" value="${src.dir}/nl/ansuz/util/Version.as" />
+	<property name="version.replace.key" value="version" />
+	
+	<tstamp>
+		<!--<format property="timestamp" pattern="dd-MMM-yy HH:mm:ss" />-->
+		<format property="version.timestamp" pattern="dd-MM-yyyy HH:mm:ss" />
+	</tstamp>
+	
+	<!--
+		VERSION INJECTION
+	-->
+	<target name="injectVersion">
+		<delete file="${version.src.file}" quiet="true"/>
+		<copy file="${version.tpl.file}"
+			tofile="${version.src.file}" >
+			<filterchain>
+				<replacetokens>
+					<token key="${version.replace.key}" value="${version.timestamp}"/>
+				</replacetokens>
+			</filterchain>
+			
+		</copy>
+
+	</target>
+
+	</project>
