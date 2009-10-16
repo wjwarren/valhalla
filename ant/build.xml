@@ -1,4 +1,4 @@
-<project name="Example build file" default="build" basedir="." >
+<project name="Height Maps PV3D" default="build" basedir="." >
 
 	<!-- GENERAL SETTINGS -->
 	<property name="src.dir" value="${basedir}/../src/" />
@@ -8,7 +8,8 @@
 	<!-- NOTE: Place your imports after properties the imported Ant scripts rely on! -->
 	<import file="as3_version.xml" />
 	<import file="flex_pmd.xml" />
+	<import file="tdsi.xml" />
 	
-	<target name="build" depends="injectVersion, flexPMDDefaultRules" />
+	<target name="build" depends="injectVersion, tdsi, flexPMDDefaultRules" />
 	
 </project>

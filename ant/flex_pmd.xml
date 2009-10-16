@@ -29,8 +29,7 @@
 		FLEX PMD
 	-->
 	<target name="flexPMDDefaultRules">
-        <echo>Flex PMD class path: ${flexpmd.dir}/flex-pmd-ant-task-${flexpmd.version}.jar</echo>
-		<flexPmd
+        <flexPmd
             sourceDirectory="${src.dir}"
             outputDirectory="${bin-debug.dir}/pmd"/>
 		<move file="${bin-debug.dir}/pmd/pmd.xml"

@@ -1,0 +1,30 @@
+<project name="Turbo Diesel Sport Injection" default="tdsi" basedir="." >
+
+	<!-- TDSI Properties -->
+	<property name="tdsi.dir" value="C:/apparat/bin/tdsi" />
+	<property name="tdsi.jar" value="${tdsi.dir}/tdsi.jar" />
+	
+	<property name="tdsi.input" value="${bin-debug.dir}/main.swf" />
+	<property name="tdsi.output" value="${bin-debug.dir}/main_optimized.swf" />
+	
+	<!--
+		TDSI
+	-->
+	<target name="tdsi">
+		<java jar="${tdsi.jar}"
+			failonerror="true"
+			fork="true">
+			
+			<arg line="-input ${tdsi.input} " />
+			<arg line="-output ${tdsi.output} " />
+			
+			<arg line="-inline-bytecode true " />
+			<arg line="-integer-calculus false " />
+			<arg line="-bytecode-permutations true " />
+			<arg line="-inline-memory true " />
+			<arg line="-dead-code-elimination false" />
+			
+		</java>
+	</target>
+
+</project>
